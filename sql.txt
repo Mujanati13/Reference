@@ -1,0 +1,28 @@
+-- Table for 'Client'
+CREATE TABLE Client (
+    client_id INT PRIMARY KEY,
+    username VARCHAR(255),
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    age INT,
+    phone_number VARCHAR(15),
+    gender ENUM('Male', 'Female'),
+    city VARCHAR(255),
+    country VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255),
+    created_at TIMESTAMP,
+    account_status ENUM('Active', 'Inactive', 'Suspended'),
+    last_login TIMESTAMP,
+    profile_picture_url VARCHAR(255),
+    ip_address VARCHAR(15)
+);
+
+-- Table for 'sessions'
+CREATE TABLE sessions (
+    session_id INT PRIMARY KEY,
+    client_id INT,
+    expiry_timestamp TIMESTAMP,
+    created_at TIMESTAMP,
+    FOREIGN KEY (client_id) REFERENCES Client(client_id)
+);
